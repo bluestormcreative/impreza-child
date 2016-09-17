@@ -1,0 +1,189 @@
+/*
+Theme Name: Client Theme Name
+Template: Impreza
+Description: Impreza Child theme for CLIENT NAME
+Version: 1.0
+Author:	NGNG Enterprises
+Theme URI: http://clientdomainname.com/
+Author URI: http://insightfuldevelopment.com
+*/
+
+/*
+
+Colors:
+
+======== Customizations Here... =========================== */
+
+
+/* ===== Global =========================== */
+
+.screenreader, .screen-reader-text,
+.screen-reader, .fontawesome-text { /* Hide visually, but have available for screenreaders */
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+.banner + .l-main,
+.top-optin + .l-main {
+      padding-top: 40px;
+  }
+
+/* ===== Typography =========================== */
+
+
+/* ===== Header / Nav =========================== */
+.banner {
+    height: 300px; /* TODO: remove for real image */
+}
+
+.banner img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+/* ===== Home =========================== */
+
+
+/* ===== Pages =========================== */
+
+
+/* ===== Blog & Posts =========================== */
+
+
+/* ===== Optins & Forms =========================== */
+
+.top-optin {
+    background: #ddd;
+    text-align: center;
+}
+
+.top-optin .l-section-h {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.top-optin h2,
+.top-optin h3 {
+    margin-bottom: 0;
+}
+
+.top-optin form input {
+    display: block;
+    width: 80%;
+    margin: 0 auto 5px;
+}
+
+
+/* ===== Social Media Icons =========================== */
+
+ul#menu-social-media-icons,
+ul#menu-social-media-icons-1 {
+    margin-left:0;
+    list-style-type:none;
+}
+
+#menu-social-media-icons li,
+#menu-social-media-icons-1 li {
+    display:inline-block;
+    width:20px;
+    font-size:20px;
+    margin-right:10px;
+}
+
+#menu-social-media-icons li a:hover i,
+#menu-social-media-icons-1 li a:hover i {
+    color:teal;
+}
+
+.fa-facebook {
+    color:#3b5998;
+}
+
+.fa-twitter {
+    color:#00aced;
+}
+
+.fa-linkedin {
+    color:#0976b4;
+}
+
+.fa-youtube {
+    color:#b31217;
+}
+
+.fa-google-plus {
+    color:#dd4b39;
+}
+
+.fa-rss {
+    color:orange;
+}
+
+.fa-pinterest {
+    color:#cc2127;
+}
+
+.fa-instagram {
+  color:purple;
+}
+
+
+/* ===== Sidebars & Widgets =========================== */
+
+/* Remove styling we don't need for sidebar menu items... */
+.l-main .widget_nav_menu .menu-item a:before,
+.l-footer .widget_nav_menu .menu-item:before {
+    display: none;
+}
+.l-main .widget_nav_menu > div {
+    border: 0;
+}
+.l-main .widget_nav_menu .menu-item a {
+    border: 0;
+    padding: 0;
+}
+
+.l-main .widget_nav_menu .menu-item a:hover,
+.l-main .widget_nav_menu .menu-item a:focus {
+    background-color: transparent;
+}
+
+
+/* ===== Footer =========================== */
+
+/* footer widget buttons */
+.l-subfooter.at_top input[type=submit] {
+    background: #888888;
+}
+
+
+/* ===== Media Queries =========================== */
+
+@media (min-width: 900px) {
+
+    .top-optin {
+        text-align: left;
+    }
+
+    .top-optin form input {
+        display: inline-block;
+        width: 31%;
+        margin-right: 5px;
+    }
+
+    .top-optin form input[type=submit] {
+        position: relative;
+        top: -1px;
+        font-size: 14px;
+        height: 40px;
+        margin-right: 0;
+        border: 0;
+    }
+}
