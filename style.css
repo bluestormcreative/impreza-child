@@ -31,11 +31,7 @@ Colors:
 
 .banner + .l-main,
 .top-optin + .l-main {
-<<<<<<< Updated upstream
-      padding-top: 40px;
-=======
       padding-top: 40px!important;
->>>>>>> Stashed changes
   }
 
 /* ===== Typography =========================== */
@@ -43,21 +39,14 @@ Colors:
 
 /* ===== Header / Nav =========================== */
 .banner {
-<<<<<<< Updated upstream
-    height: 300px; /* TODO: remove for real image */
-=======
     height: 300px; /* TODO: adjust for real image */
->>>>>>> Stashed changes
 }
 
 .banner img {
     width: 100%;
     max-width: 100%;
     height: auto;
-<<<<<<< Updated upstream
-=======
     max-height: 300px; /* TODO: remove for real image */
->>>>>>> Stashed changes
 }
 
 /* ===== Home =========================== */
@@ -74,10 +63,7 @@ Colors:
 .top-optin {
     background: #ddd;
     text-align: center;
-<<<<<<< Updated upstream
-=======
     /*margin-top: -10px;*/
->>>>>>> Stashed changes
 }
 
 .top-optin .l-section-h {
@@ -96,13 +82,9 @@ Colors:
     margin: 0 auto 5px;
 }
 
-<<<<<<< Updated upstream
-=======
 .footer-optin form input {
     margin-bottom: 5px;
 }
-
->>>>>>> Stashed changes
 
 /* ===== Social Media Icons =========================== */
 
@@ -191,13 +173,10 @@ ul#menu-social-media-icons-1 {
 
 @media (min-width: 900px) {
 
-<<<<<<< Updated upstream
-=======
     .header_hor .l-header.pos_fixed ~ .l-titlebar, .header_hor .l-canvas.titlebar_none.sidebar_left .l-header.pos_fixed ~ .l-main, .header_hor .l-canvas.titlebar_none.sidebar_right .l-header.pos_fixed ~ .l-main, .header_hor .l-canvas.titlebar_none.sidebar_none .l-header.pos_fixed ~ .l-main .l-section:first-child, .header_hor .l-header.pos_static.bg_transparent ~ .l-titlebar, .header_hor .l-canvas.titlebar_none.sidebar_left .l-header.pos_static.bg_transparent ~ .l-main, .header_hor .l-canvas.titlebar_none.sidebar_right .l-header.pos_static.bg_transparent ~ .l-main, .header_hor .l-canvas.titlebar_none.sidebar_none .l-header.pos_static.bg_transparent ~ .l-main .l-section:first-child {
         padding-top: 0!important;
     }
 
->>>>>>> Stashed changes
     .top-optin {
         text-align: left;
     }

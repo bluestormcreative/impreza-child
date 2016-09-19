@@ -8,18 +8,11 @@
 * @author Shannon MacMillan
 */
 function bsc_enqueue_scripts() {
-<<<<<<< Updated upstream
-=======
-
     // Add a jQuery script to handle the fixed header responsively.
->>>>>>> Stashed changes
     wp_enqueue_script( 'bsc-scripts', get_stylesheet_directory_uri() .'/js/ngng-scripts.js', array( 'jquery' ), false, true );
 }
 add_action( 'wp_enqueue_scripts', 'bsc_enqueue_scripts' );
 
-<<<<<<< Updated upstream
-// Set WordPress SEO metabox priority to low so it is below other metaboxes on editor screens.
-=======
 
 /**
 * Set WordPress SEO metabox priority to low so it is below other metaboxes on editor screens.
@@ -59,32 +52,6 @@ add_action( 'init', 'bsc_remove_wpseo_notifications' );
 * @author Shannon MacMillan
 */
 function bsc_do_banner_image() {
-
-<<<<<<< Updated upstream
-    ob_start();
-    ?>
-    <div id="banner" class="banner">Banner image here.</div><!-- #banner -->
-    <div id="top-optin" class="optin top-optin">
-        <div class="l-section-h g-cols">
-            <div class="vc_col-sm-6 optin-left">
-                <h3>This is the optin text</h3>
-            </div>
-            <div class="vc_col-sm-6 optin-right">
-                <form>
-                  <label class="screenreader" for="name">Name</label>
-                  <input type="text" name="FNAME" value="Name" id="mce-FNAME" onblur=" if (this.value == '' ) this.value = 'Name'; " onfocus="if(this.value == 'Name') this.value = '';" >
-                  <label class="screenreader">Email</label>
-                  <input type="email" name="EMAIL" value="Email" id="mce-EMAIL" onblur=" if (this.value == '' ) this.value = 'Email'; " onfocus="if(this.value == 'Email') this.value = '';" >
-                  <input type="submit" value="Sign Up"></input>
-                </form>
-            </div>
-        </div><!-- .container -->
-    </div><!-- #top-optin -->
-    <?php
-    echo ob_get_clean();
-}
-add_action( 'us_after_template:templates/l-header', 'bsc_do_banner_image' );
-=======
     // Get the post so we can grab our custom fields.
     global $post;
 
@@ -168,5 +135,4 @@ if ( function_exists('acf_add_options_page') ) {
 *
 * @author Shannon MacMillan
 */
-add_filter('acf/settings/show_admin', '__return_false');
->>>>>>> Stashed changes
+// add_filter('acf/settings/show_admin', '__return_false');
