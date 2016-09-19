@@ -31,8 +31,13 @@ Colors:
 
 .banner + .l-main,
 .top-optin + .l-main {
-      padding-top: 40px!important;
-  }
+    padding-top: 40px!important;
+}
+
+.banner + .l-titlebar,
+.top-optin + .l-titlebar {
+    padding-top: 0!important;
+}
 
 /* ===== Typography =========================== */
 
@@ -172,10 +177,6 @@ ul#menu-social-media-icons-1 {
 /* ===== Media Queries =========================== */
 
 @media (min-width: 900px) {
-
-    .header_hor .l-header.pos_fixed ~ .l-titlebar, .header_hor .l-canvas.titlebar_none.sidebar_left .l-header.pos_fixed ~ .l-main, .header_hor .l-canvas.titlebar_none.sidebar_right .l-header.pos_fixed ~ .l-main, .header_hor .l-canvas.titlebar_none.sidebar_none .l-header.pos_fixed ~ .l-main .l-section:first-child, .header_hor .l-header.pos_static.bg_transparent ~ .l-titlebar, .header_hor .l-canvas.titlebar_none.sidebar_left .l-header.pos_static.bg_transparent ~ .l-main, .header_hor .l-canvas.titlebar_none.sidebar_right .l-header.pos_static.bg_transparent ~ .l-main, .header_hor .l-canvas.titlebar_none.sidebar_none .l-header.pos_static.bg_transparent ~ .l-main .l-section:first-child {
-        padding-top: 0!important;
-    }
 
     .top-optin {
         text-align: left;
