@@ -19,7 +19,6 @@ add_action( 'wp_enqueue_scripts', 'bsc_enqueue_scripts' );
 *
 * @author Shannon MacMillan
 */
->>>>>>> Stashed changes
 function bsc_position_wpseo_metabox() {
    return 'low';
 }
