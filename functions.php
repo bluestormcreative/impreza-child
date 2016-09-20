@@ -52,7 +52,7 @@ add_action( 'init', 'bsc_remove_wpseo_notifications' );
 */
 function bsc_do_banner_image() {
 
-    // If we don't have ACF installed, get out of here.
+    // If we don't have ACF installed, get out of here to avoid a fatal error.
     if ( !class_exists( 'acf' ) ) {
         return false;
     }
