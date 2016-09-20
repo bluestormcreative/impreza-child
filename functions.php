@@ -51,6 +51,12 @@ add_action( 'init', 'bsc_remove_wpseo_notifications' );
 * @author Shannon MacMillan
 */
 function bsc_do_banner_image() {
+
+    // If we don't have ACF installed, get out of here.
+    if ( !class_exists( 'acf' ) ) {
+        return false;
+    }
+
     // Get the post so we can grab our custom fields.
     global $post;
 
