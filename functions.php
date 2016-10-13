@@ -44,7 +44,7 @@ add_action( 'init', 'bsc_remove_wpseo_notifications' );
 
 
 /**
-* Add the banner image and top optin after the fixed header.
+* Add the banner image after the fixed header.
 * The banner image and optins should be handled by an ACF options page or hardcoded here.
 * @return string The banner and top optin markup.
 *
@@ -61,8 +61,72 @@ function bsc_do_banner_image() {
     global $post;
 
     // Get all the page-specific and global custom fields.
+    $imageOrBannerGlobal = get_field( 'image_or_banner', 'option' );
+    $imageOrBannerPage = get_field( 'image_or_banner_page' );
+    $bannerContentGlobal = get_field( 'banner_content', 'option' );
+    $bannerContentPage = get_field( 'banner_content_page' );
     $hideBanner = get_field( 'hide_banner_image' );
     $bannerPage = get_field( 'banner_iamge_page' );
+
+    // Start our object buffer to hold the output.
+    ob_start();
+    ?>
+
+    <?php
+    // If the "hide banner" checkbox is not checked...
+    if ( empty( $hideBanner) ) :
+        // If the page we're on has banner content set, show that...
+        if ( $imageOrBannerPage == 'content' ) : ?>
+
+            <div id="banner-content" class="banner">
+                <?php echo $bannerContentPage; ?>
+            </div><!-- #banner-optin -->
+
+        <?php elseif ( $imageOrBannerGlobal == 'content' ) :
+            // Otherwise if the global banner has content set, show that... ?>
+            <div id="banner-content" class="banner">
+                <?php echo $bannerContentGlobal; ?>
+            </div><!-- #banner-optin -->
+
+        <?php elseif ( $imageOrBannerPage == 'image' ) :
+            // If we have a single page image set, show that... ?>
+            <div id="banner" class="banner">
+                <img src="<?php echo $bannerPage['url']; ?>" alt="<?php echo $bannerPage['alt']; ?>">
+            </div><!-- #banner -->
+
+        <?php elseif ( $imageOrBannerGlobal == 'image' ):
+            // Otherwise show the global banner if it exists. ?>
+            <div id="banner" class="banner">
+                <img src="<?php echo $bannerGlobal['url']; ?>" alt="<?php echo $bannerGlobal['alt']; ?>">
+            </div><!-- #banner -->
+        <?php endif; ?>
+    <?php endif; ?>
+    <?php
+
+    // Print our object buffer markup to the page.
+    echo ob_get_clean();
+}
+add_action( 'us_after_template:templates/l-header', 'bsc_do_banner_image', 12 );
+
+
+
+/**
+* Add thetop optin after the fixed header.
+* The optins should be handled by an ACF options page or hardcoded here.
+* @return string The banner and top optin markup.
+*
+* @author Shannon MacMillan
+*/
+function bsc_do_banner_optin() {
+
+    // If we don't have ACF installed, get out of here to avoid a fatal error.
+    if ( !class_exists( 'acf' ) ) {
+        return false;
+    }
+
+    // Get the post so we can grab our custom fields.
+    global $post;
+
     $bannerGlobal = get_field( 'banner_image', 'option' );
     $hideOptinPage = get_field( 'show_hide_top_optin_page' );
     $hideOptinGlobal = get_field( 'show_hide_top_optin', 'option' );
@@ -81,21 +145,6 @@ function bsc_do_banner_image() {
     ob_start();
     ?>
     <?php
-        // If the "hide banner" checkbox is not checked...
-        if ( empty( $hideBanner ) ):
-            // And we have a page-specific banner image, show that.
-            if ( $bannerPage ): ?>
-            <div id="banner" class="banner">
-                <img src="<?php echo $bannerPage['url']; ?>" alt="<?php echo $bannerPage['alt']; ?>">
-            </div><!-- #banner -->
-            <?php elseif ( $bannerGlobal ):
-                // Otherwise show the global banner if it exists. ?>
-                <div id="banner" class="banner">
-                    <img src="<?php echo $bannerGlobal['url']; ?>" alt="<?php echo $bannerGlobal['alt']; ?>">
-                </div><!-- #banner -->
-            <?php endif; ?>
-        <?php endif; ?>
-        <?php
         // If the global "hide optin" checkbox is not checked...
         if ( empty( $hideOptinGlobal ) ):
             // And the page-specific "hide optin" checkbox is not checked...
@@ -114,11 +163,12 @@ function bsc_do_banner_image() {
             <?php endif; ?>
         <?php endif; ?>
     <?php
-
     // Print our object buffer markup to the page.
     echo ob_get_clean();
 }
-add_action( 'us_after_template:templates/l-header', 'bsc_do_banner_image' );
+add_action( 'us_after_template:templates/l-header', 'bsc_do_banner_optin', 15 );
+
+
 
 
 /**
@@ -140,4 +190,4 @@ if ( function_exists('acf_add_options_page') ) {
 *
 * @author Shannon MacMillan
 */
-add_filter('acf/settings/show_admin', '__return_false');
+//add_filter('acf/settings/show_admin', '__return_false');
