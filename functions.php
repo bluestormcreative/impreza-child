@@ -66,7 +66,8 @@ function bsc_do_banner_image() {
     $bannerContentGlobal = get_field( 'banner_content', 'option' );
     $bannerContentPage = get_field( 'banner_content_page' );
     $hideBanner = get_field( 'hide_banner_image' );
-    $bannerPage = get_field( 'banner_iamge_page' );
+    $bannerPage = get_field( 'banner_image_page' );
+    $bannerGlobal = get_field( 'banner_image', 'option' );
 
     // Start our object buffer to hold the output.
     ob_start();
@@ -127,7 +128,6 @@ function bsc_do_banner_optin() {
     // Get the post so we can grab our custom fields.
     global $post;
 
-    $bannerGlobal = get_field( 'banner_image', 'option' );
     $hideOptinPage = get_field( 'show_hide_top_optin_page' );
     $hideOptinGlobal = get_field( 'show_hide_top_optin', 'option' );
     $optinLeft = get_field( 'top_optin_left', 'option' );
