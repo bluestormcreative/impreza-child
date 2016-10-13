@@ -20,6 +20,8 @@ window.BannerMargin = {};
         app.$c = {
             window: $(window),
             banner: $( '#banner' ),
+            bannerContent: $( '#banner-content' ),
+            optin: $( '#top-optin' ),
             header: $( '.l-header.pos_fixed'),
         };
     };
@@ -39,8 +41,22 @@ window.BannerMargin = {};
         // Get the height of the header on page load.
         var headerHeight = app.$c.header.outerHeight();
 
+    // If we have a banner area...
+    if ( app.$c.banner ) {
         // Set the top margin of our banner to the height of the fixed header.
         app.$c.banner.css( 'margin-top', headerHeight + 'px');
+
+    }
+
+    if ( app.$c.bannerContent) {
+        // Set the top margin of our banner to the height of the fixed header.
+        app.$c.bannerContent.css( 'margin-top', headerHeight + 'px');
+    }
+
+    if ( !app.$c.banner && !app.$c.bannerContent ) {
+        // Set the top margin of our banner to the height of the fixed header.
+        app.$c.optin.css( 'margin-top', headerHeight + 'px');
+    }
 
         // When the window is resized...
         app.$c.window.resize( function() {
@@ -49,7 +65,7 @@ window.BannerMargin = {};
             headerHeight = app.$c.header.outerHeight();
             // And set it to the top margin of the banner again.
             app.$c.banner.css( 'margin-top', headerHeight + 'px');
-            
+
         });
     };
 
