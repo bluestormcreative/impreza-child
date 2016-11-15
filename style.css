@@ -41,6 +41,13 @@ Colors:
 
 /* ===== Typography =========================== */
 
+.white-text,
+.white-text p,
+.white-text h1,
+.white-text h2,
+.white-text h3 {
+    color: white!important;
+}
 
 /* ===== Header / Nav =========================== */
 .banner {
@@ -171,6 +178,15 @@ ul#menu-social-media-icons-1 {
 /* footer widget buttons */
 .l-subfooter.at_top input[type=submit] {
     background: #888888;
+}
+
+.w-copyright a {
+  color: #555555;
+}
+
+.w-copyright a:hover,
+.w-copyright a:focus {
+  color: white;
 }
 
 
