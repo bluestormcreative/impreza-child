@@ -191,3 +191,11 @@ if ( function_exists('acf_add_options_page') ) {
 * @author Shannon MacMillan
 */
 //add_filter('acf/settings/show_admin', '__return_false');
+
+
+/**
+* Add visibilty field to Gravity Forms labels
+*
+* @author Shannon MacMillan
+*/
+add_filter( 'gform_enable_field_label_visibility_settings', '__return_true' );
