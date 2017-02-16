@@ -12,5 +12,10 @@
 */
 function ngng_do_copyright() {
 
+	// The site's title and the current year.
+	$title = get_bloginfo( 'title' );
+	$date = date( 'Y' );
+
+	echo '&copy; ' . $date . ' ' . $title ' ';
 }
 add_shortcode( 'copyright', 'ngng_do_copyright' );
