@@ -60,4 +60,4 @@ add_filter( 'gform_enable_field_label_visibility_settings', '__return_true' );
 *
 * @author Shannon MacMillan
 */
-//require_once WP_CONTENT_DIR . '/acf/acf-components.php';
+include_once( 'acf/acf-components.php' );
