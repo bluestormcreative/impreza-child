@@ -69,3 +69,21 @@ add_filter( 'gform_enable_field_label_visibility_settings', '__return_true' );
 * @author Shannon MacMillan
 */
 include_once( 'shortcodes.php' );
+
+
+/**
+* Add post name to body classes for use in styling
+*
+* @author Shannon MacMillan
+*/
+function ngng_class_names( $classes )
+{
+	global $post;
+
+	// Add 'post_name' to the $classes array.
+	$classes[] = $post->post_name;
+
+	// Return the $classes array.
+	return $classes;
+}
+add_filter( 'body_class', 'ngng_class_names' );
