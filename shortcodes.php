@@ -19,3 +19,16 @@ function ngng_do_copyright() {
 	echo '&copy; ' . $date . ' ' . $title ' ';
 }
 add_shortcode( 'copyright', 'ngng_do_copyright' );
+
+
+/** NGNG link shortcode
+* Add the "web development" NGNG link, for use in editor.
+*
+* @author Shannon MacMillan
+*/
+function ngng_do_link() {
+
+	// Add a link to the NGNG site.
+	echo '<a href="' . esc_url( 'http://insightfuldevelopment.com' ) . '" target="blank">' . esc_html( 'Website Development', 'impreza-child' ) . '</a>';
+}
+add_shortcode( 'ngnglink', 'ngng_do_link' );
