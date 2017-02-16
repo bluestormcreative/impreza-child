@@ -49,3 +49,15 @@ add_action( 'init', 'bsc_remove_wpseo_notifications' );
 * @author Shannon MacMillan
 */
 add_filter( 'gform_enable_field_label_visibility_settings', '__return_true' );
+
+
+/**
+* Optionally add ACF components.
+*
+* Includes global banner/content area, global optin bar,
+* page-specific banner/content area, and NGNG options page.
+* To use, un-comment this line and import the acf/.json file into the Pro plugin.
+*
+* @author Shannon MacMillan
+*/
+//require_once WP_CONTENT_DIR . '/acf/acf-components.php';
