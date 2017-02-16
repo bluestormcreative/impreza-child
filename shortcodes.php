@@ -16,7 +16,7 @@ function ngng_do_copyright() {
 	$title = get_bloginfo( 'title' );
 	$date = date( 'Y' );
 
-	echo '&copy; ' . $date . ' ' . $title . ' ';
+	echo '&copy; ' . $date . ' ' . $title . ' | ';
 }
 add_shortcode( 'copyright', 'ngng_do_copyright' );
 
