@@ -16,7 +16,7 @@ function ngng_do_copyright() {
 	$title = get_bloginfo( 'title' );
 	$date = date( 'Y' );
 
-	echo '&copy; ' . $date . ' ' . $title . ' | ';
+	return '&copy; ' . $date . ' ' . $title . ' | ';
 }
 add_shortcode( 'copyright', 'ngng_do_copyright' );
 
@@ -29,6 +29,6 @@ add_shortcode( 'copyright', 'ngng_do_copyright' );
 function ngng_do_link() {
 
 	// Add a link to the NGNG site.
-	echo '<a href="' . esc_url( 'http://insightfuldevelopment.com' ) . '" target="blank">' . esc_html( 'Website Development', 'impreza-child' ) . '</a>';
+	return '<a href="' . esc_url( 'http://insightfuldevelopment.com' ) . '" target="blank">' . esc_html( 'Website Development', 'impreza-child' ) . '</a>';
 }
 add_shortcode( 'ngnglink', 'ngng_do_link' );
