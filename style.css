@@ -50,16 +50,7 @@ Colors:
 }
 
 /* ===== Header / Nav =========================== */
-.banner {
-    height: 300px; /* TODO: adjust for real image */
-}
 
-.banner img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    max-height: 300px; /* TODO: remove for real image */
-}
 
 /* ===== Home =========================== */
 
