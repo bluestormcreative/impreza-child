@@ -44,6 +44,15 @@ add_action( 'init', 'ngng_remove_wpseo_notifications' );
 
 
 /**
+* Hide ACF menu in admin
+* This hides the custom fields admin area. If you'd like to use this area to edit custom fields, comment out line 52 below.
+*
+* @author Shannon MacMillan
+*/
+add_filter( 'acf/settings/show_admin', '__return_false' );
+
+
+/**
 * Add visibilty field to Gravity Forms labels
 *
 * @author Shannon MacMillan
