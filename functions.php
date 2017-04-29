@@ -20,13 +20,13 @@ add_action( 'wp_enqueue_scripts', 'ngng_enqueue_scripts' );
 * @author Shannon MacMillan
 */
 function ngng_position_wpseo_metabox() {
-   return 'low';
+	return 'low';
 }
 add_filter( 'wpseo_metabox_prio', 'ngng_position_wpseo_metabox' );
 
 
 /**
-* Remove Yoast SEO notifications from the admin
+* Remove Yoast SEO notifications from the admin.
 * To stop clients from freaking out about unneeded notices.
 *
 * @author Shannon MacMillan
@@ -44,7 +44,7 @@ add_action( 'init', 'ngng_remove_wpseo_notifications' );
 
 
 /**
-* Hide ACF menu in admin
+* Hide ACF Custom Fields menu item in admin.
 * This hides the custom fields admin area. If you'd like to use this area to edit custom fields, comment out line 52 below.
 *
 * @author Shannon MacMillan
@@ -54,6 +54,7 @@ add_filter( 'acf/settings/show_admin', '__return_false' );
 
 /**
 * Add visibilty field to Gravity Forms labels
+* This lets you set a label on the back end that is invisible on the front end. Go to the field's "appearance" tab and set the visibiltiy dropdown to "admin only".
 *
 * @author Shannon MacMillan
 */
@@ -61,7 +62,8 @@ add_filter( 'gform_enable_field_label_visibility_settings', '__return_true' );
 
 
 /**
-* Add NGNG specific shortcodes file
+* Add NGNG specific shortcodes file.
+* This includes the [copyright] and [ngnglink] shortcodes as of 4/29/2017.
 *
 * @author Shannon MacMillan
 */
@@ -69,7 +71,7 @@ include_once( 'shortcodes.php' );
 
 
 /**
-* Add post name to body classes for use in styling
+* Add post name to body classes for use in styling.
 *
 * @author Shannon MacMillan
 */
@@ -89,7 +91,7 @@ add_filter( 'body_class', 'ngng_class_names' );
  * Add the Headers post type so we can use VC for headers
  * Generated using Custom Post Types UI plugin.
  *
- * @author Shannon MacMillan
+ * @author WDS / Shannon MacMillan
  */
 function cptui_register_my_cpts_page_header() {
 
@@ -130,7 +132,7 @@ add_action( 'init', 'cptui_register_my_cpts_page_header' );
 
 
 /**
- * Create a single global header post on theme activation
+ * Create a single global header post on theme activation.
  *
  * @author Shannon MacMillan
  */
