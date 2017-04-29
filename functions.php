@@ -131,3 +131,38 @@ function cptui_register_my_cpts_page_header() {
 }
 
 add_action( 'init', 'cptui_register_my_cpts_page_header' );
+
+
+/**
+ * Create a single global header post on theme activation
+ *
+ * @author Shannon MacMillan
+ */
+function ngng_create_global_header_post() {
+
+	// If the theme has been activated and we are in the admin.
+	if ( isset( $_GET['activated'] ) && is_admin() ) {
+
+		// Set up global post title and slug.
+		$new_header_title = 'Global Header';
+		$new_header_slug = 'global-header';
+
+		// Check to make sure this post doesn't already exist.
+		$header_check = get_page_by_title( $new_header_title, OBJECT, 'page_header' );
+
+		// Create an array of our post parameters.
+		$new_header = array(
+				'post_type' => 'page_header',
+				'post_title' => $new_header_title,
+				'post_slug' => $new_header_slug,
+				'post_status' => 'publish',
+				'post_author' => 1,
+		);
+
+		// If our check is not set, create the new header post.
+		if ( ! isset( $header_check ) ) {
+			wp_insert_post( $new_header );
+		}
+	}
+}
+add_action( 'after_switch_theme', 'ngng_create_global_header_post' );
