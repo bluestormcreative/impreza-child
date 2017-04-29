@@ -33,124 +33,57 @@ if ( function_exists('acf_add_options_page') ) {
 
 
  /**
- * Add the banner image after the fixed header.
- * The banner image and optins should be handled by an ACF options page or hardcoded here.
- * @return string The banner and top optin markup.
+ * Add either a global header or a page-specific header.
+ *
+ * @return string The markup for the header.
  *
  * @author Shannon MacMillan
  */
- function bsc_do_banner_image() {
+function bsc_do_ngng_header() {
 
-	 // If we don't have ACF installed, get out of here to avoid a fatal error.
-	 if ( !class_exists( 'acf' ) ) {
+	// If we don't have ACF installed, get out of here to avoid a fatal error.
+	if ( ! class_exists( 'acf' ) ) {
 		 return false;
-	 }
+	}
 
 	 // Get the post so we can grab our custom fields.
 	 global $post;
 
-	 // Get all the page-specific and global custom fields.
-	 $imageOrBannerGlobal = get_field( 'image_or_banner', 'option' );
-	 $imageOrBannerPage = get_field( 'image_or_banner_page' );
-	 $bannerContentGlobal = get_field( 'banner_content', 'option' );
-	 $bannerContentPage = get_field( 'banner_content_page' );
-	 $hideBanner = get_field( 'hide_banner_image' );
-	 $bannerPage = get_field( 'banner_image_page' );
-	 $bannerGlobal = get_field( 'banner_image', 'option' );
+	 // Custom header options for this page.
+	 $hide_banner = get_field( 'hide_page_header' );
+	 $choose_header = get_field( 'choose_page_header' );
 
-	 // Start our object buffer to hold the output.
-	 ob_start();
+	 // Get the title of our specific header so we can check against the global.
+	 $page_specific_header_title = $choose_header->post_title;
 
-	 // If the "hide banner" checkbox is not checked...
-	 if ( empty( $hideBanner) ) :
-		 // If the page we're on has banner content set, show that...
-		 if ( $imageOrBannerPage == 'content' ) : ?>
+	 // Let's grab our global header if we have one.
+	 $global_header = get_page_by_title( 'Global Header', OBJECT, 'page_header' );
 
-			 <div id="banner-content" class="banner">
-				 <?php echo $bannerContentPage; ?>
-			 </div><!-- #banner-optin -->
+	if ( true != $hide_banner ) {
 
-		 <?php elseif ( $imageOrBannerGlobal == 'content' ) :
-			 // Otherwise if the global banner has content set, show that... ?>
-			 <div id="banner-content" class="banner">
-				 <?php echo $bannerContentGlobal; ?>
-			 </div><!-- #banner-optin -->
+		// If we've chosen a page-specific header...
+		if ( $choose_header && 'Global Header' !== $page_specific_header_title ) {
 
-		 <?php elseif ( $imageOrBannerPage == 'image' ) :
-			 // If we have a single page image set, show that... ?>
-			 <div id="banner" class="banner">
-				 <img src="<?php echo $bannerPage['url']; ?>" alt="<?php echo $bannerPage['alt']; ?>">
-			 </div><!-- #banner -->
+			// We're going to display the specific page header.
+			$header_post = $choose_header;
 
-		 <?php elseif ( $imageOrBannerGlobal == 'image' ):
-			 // Otherwise show the global banner if it exists. ?>
-			 <div id="banner" class="banner">
-				 <img src="<?php echo $bannerGlobal['url']; ?>" alt="<?php echo $bannerGlobal['alt']; ?>">
-			 </div><!-- #banner -->
-		 <?php endif; ?>
-	 <?php endif; ?>
-	 <?php
+		} elseif ( $global_header ) {
 
-	 // Print our object buffer markup to the page.
-	 echo ob_get_clean();
- }
- add_action( 'us_after_template:templates/l-header', 'bsc_do_banner_image', 12 );
+			//  We're going to display the global header post.
+			$header_post = $global_header;
+		}
 
+		// Override $post with our header data.
+		setup_postdata( $header_post );
 
+		?>
+			<div id="banner" class="banner">
+				<?php the_content(); ?>
+			</div><!-- .banner -->
 
- /**
- * Add thetop optin after the fixed header.
- * The optins should be handled by an ACF options page or hardcoded here.
- * @return string The banner and top optin markup.
- *
- * @author Shannon MacMillan
- */
- function bsc_do_banner_optin() {
+		<?php
 
-	 // If we don't have ACF installed, get out of here to avoid a fatal error.
-	 if ( !class_exists( 'acf' ) ) {
-		 return false;
-	 }
-
-	 // Get the post so we can grab our custom fields.
-	 global $post;
-
-	 $hideOptinPage = get_field( 'show_hide_top_optin_page' );
-	 $hideOptinGlobal = get_field( 'show_hide_top_optin', 'option' );
-	 $optinLeft = get_field( 'top_optin_left', 'option' );
-	 $optinRight = get_field( 'top_optin_right', 'option' );
-	 $optinBgColorPage = get_field( 'top_optin_background_color_page' );
-	 $optinBgColorGlobal = get_field( 'top_optin_background_color', 'option' );
-
-	 if ( $optinBgColorPage ) {
-		 $bgColor = $optinBgColorPage;
-	 } else {
-		 $bgColor = $optinBgColorGlobal;
-	 }
-
-	 // Start our object buffer to hold the output.
-	 ob_start();
-	 ?>
-	 <?php
-		 // If the global "hide optin" checkbox is not checked...
-		 if ( empty( $hideOptinGlobal ) ):
-			 // And the page-specific "hide optin" checkbox is not checked...
-			 if ( empty( $hideOptinPage ) ):
-				 // Show the global optin. ?>
-				 <div id="top-optin" class="optin top-optin" style="background-color: <?php echo $bgColor; ?>;">
-					 <div class="l-section-h g-cols">
-						 <div class="vc_col-sm-6 optin-left">
-							 <?php echo $optinLeft; ?>
-						 </div>
-						 <div class="vc_col-sm-6 optin-right">
-							 <?php echo $optinRight; ?>
-						 </div>
-					 </div><!-- .container -->
-				 </div><!-- #top-optin -->
-			 <?php endif; ?>
-		 <?php endif; ?>
-	 <?php
-	 // Print our object buffer markup to the page.
-	 echo ob_get_clean();
- }
- add_action( 'us_after_template:templates/l-header', 'bsc_do_banner_optin', 15 );
+		wp_reset_postdata();
+	}
+}
+add_action( 'us_after_template:templates/l-header', 'bsc_do_ngng_header', 12 );
