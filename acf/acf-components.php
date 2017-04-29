@@ -1,7 +1,7 @@
 <?php
 /** ACF COMPONENTS
 * This file houses optional Advanced Custom Fields theme components.
-* To use this file, un-comment line 61 in functions.php.
+* To use this file, un-comment line 63 in functions.php.
 *
 * Components include a global options page, global banner image or content area to place a slideshow,
 * page-specific banner/slideshow areas, and a global optin bar.
