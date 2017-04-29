@@ -1,0 +1,74 @@
+[
+    {
+        "key": "group_57e0328c16b9c",
+        "title": "Page Header",
+        "fields": [
+            {
+                "key": "field_590425b2fafef",
+                "label": "Hide page header?",
+                "name": "hide_page_header",
+                "type": "true_false",
+                "instructions": "Check this to hide both the global and page-specific page headers.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "",
+                "default_value": 0,
+                "ui": 0,
+                "ui_on_text": "",
+                "ui_off_text": ""
+            },
+            {
+                "key": "field_59042586fafee",
+                "label": "Choose page header",
+                "name": "choose_page_header",
+                "type": "post_object",
+                "instructions": "By default, the Global Header will show on every page unless you select a different header here. Create headers in the Appearance -> Headers admin area using Visual Composer.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_590425b2fafef",
+                            "operator": "!=",
+                            "value": "1"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "post_type": [
+                    "page_header"
+                ],
+                "taxonomy": [],
+                "allow_null": 0,
+                "multiple": 0,
+                "return_format": "object",
+                "ui": 1
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "page"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "acf_after_title",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": 1,
+        "description": ""
+    }
+]
