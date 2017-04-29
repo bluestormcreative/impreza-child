@@ -63,23 +63,7 @@ Colors:
 
 /* ===== Optins & Forms =========================== */
 
-.top-optin {
-    background: #ddd;
-    text-align: center;
-    /*margin-top: -10px;*/
-}
-
-.top-optin .l-section-h {
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
-.top-optin h2,
-.top-optin h3 {
-    margin-bottom: 0;
-}
-
-.top-optin form input {
+.optin form input {
     display: block;
     width: 80%;
     margin: 0 auto 5px;
@@ -185,17 +169,13 @@ ul#menu-social-media-icons-1 {
 
 @media (min-width: 900px) {
 
-    .top-optin {
-        text-align: left;
-    }
-
-    .top-optin form input {
+    .optin form input {
         display: inline-block;
         width: 31%;
         margin-right: 5px;
     }
 
-    .top-optin form input[type=submit] {
+    .optin form input[type=submit] {
         position: relative;
         top: -1px;
         font-size: 14px;
