@@ -164,3 +164,25 @@ function ngng_create_global_header_post() {
 	}
 }
 add_action( 'after_switch_theme', 'ngng_create_global_header_post' );
+
+
+/**
+ * Remove Yoast SEO box from header cpts.
+ *
+ * @author Shannon MacMillan
+ */
+function ngng_remove_yoast_metabox_page_headers() {
+	remove_meta_box( 'wpseo_meta', 'page_header', 'normal' );
+}
+add_action( 'add_meta_boxes', 'ngng_remove_yoast_metabox_page_headers', 11 );
+
+
+/**
+ * Remove Revolution slider box from header cpts.
+ *
+ * @author Shannon MacMillan
+ */
+function ngng_remove_revslider_metabox_page_headers() {
+	remove_meta_box( 'mymetabox_revslider_0', 'page_header', 'normal' );
+}
+add_action( 'add_meta_boxes', 'ngng_remove_revslider_metabox_page_headers', 11 );
