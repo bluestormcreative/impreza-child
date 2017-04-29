@@ -101,35 +101,34 @@ function cptui_register_my_cpts_page_header() {
 	 */
 
 	$labels = array(
-		"name" => __( 'Headers', '' ),
-		"singular_name" => __( 'Header', '' ),
+		'name' => __( 'Headers', '' ),
+		'singular_name' => __( 'Header', '' ),
 	);
 
 	$args = array(
-		"label" => __( 'Headers', '' ),
-		"labels" => $labels,
-		"description" => "",
-		"public" => true,
-		"publicly_queryable" => false,
-		"show_ui" => true,
-		"show_in_rest" => false,
-		"rest_base" => "",
-		"has_archive" => false,
-		"show_in_menu" => "themes.php",
-		"show_in_menu_string" => "themes.php",
-		"menu_position" => 10,
-		"exclude_from_search" => true,
-		"capability_type" => "post",
-		"map_meta_cap" => true,
-		"hierarchical" => false,
-		"rewrite" => array( "slug" => "page_header", "with_front" => true ),
-		"query_var" => true,
-		"supports" => array( "title", "editor" ),
+		'label' => __( 'Headers', '' ),
+		'labels' => $labels,
+		'description' => '',
+		'public' => true,
+		'publicly_queryable' => false,
+		'show_ui' => true,
+		'show_in_rest' => false,
+		'rest_base' => '',
+		'has_archive' => false,
+		'show_in_menu' => 'themes.php',
+		'show_in_menu_string' => 'themes.php',
+		'menu_position' => 10,
+		'exclude_from_search' => true,
+		'capability_type' => 'post',
+		'map_meta_cap' => true,
+		'hierarchical' => false,
+		'rewrite' => array( 'slug' => 'page_header', 'with_front' => true ),
+		'query_var' => true,
+		'supports' => array( 'title', 'editor' ),
 	);
 
-	register_post_type( "page_header", $args );
+	register_post_type( 'page_header', $args );
 }
-
 add_action( 'init', 'cptui_register_my_cpts_page_header' );
 
 
