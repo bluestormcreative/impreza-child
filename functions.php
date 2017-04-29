@@ -76,8 +76,7 @@ include_once( 'shortcodes.php' );
 *
 * @author Shannon MacMillan
 */
-function ngng_class_names( $classes )
-{
+function ngng_class_names( $classes ) {
 	global $post;
 
 	// Add 'post_name' to the $classes array.
