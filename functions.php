@@ -7,11 +7,11 @@
 *
 * @author Shannon MacMillan
 */
-function bsc_enqueue_scripts() {
+function ngng_enqueue_scripts() {
 	// Add a jQuery script to handle the fixed header responsively.
 	wp_enqueue_script( 'bsc-scripts', get_stylesheet_directory_uri() .'/js/ngng-scripts.js', array( 'jquery' ), false, true );
 }
-add_action( 'wp_enqueue_scripts', 'bsc_enqueue_scripts' );
+add_action( 'wp_enqueue_scripts', 'ngng_enqueue_scripts' );
 
 
 /**
@@ -19,10 +19,10 @@ add_action( 'wp_enqueue_scripts', 'bsc_enqueue_scripts' );
 *
 * @author Shannon MacMillan
 */
-function bsc_position_wpseo_metabox() {
+function ngng_position_wpseo_metabox() {
    return 'low';
 }
-add_filter( 'wpseo_metabox_prio', 'bsc_position_wpseo_metabox' );
+add_filter( 'wpseo_metabox_prio', 'ngng_position_wpseo_metabox' );
 
 
 /**
@@ -31,7 +31,7 @@ add_filter( 'wpseo_metabox_prio', 'bsc_position_wpseo_metabox' );
 *
 * @author Shannon MacMillan
 */
-function bsc_remove_wpseo_notifications() {
+function ngng_remove_wpseo_notifications() {
 
 	if ( ! class_exists( 'Yoast_Notification_Center' ) ) {
 		return;
@@ -40,7 +40,7 @@ function bsc_remove_wpseo_notifications() {
 	remove_action( 'admin_notices', array( Yoast_Notification_Center::get(), 'display_notifications' ) );
 	remove_action( 'all_admin_notices', array( Yoast_Notification_Center::get(), 'display_notifications' ) );
 }
-add_action( 'init', 'bsc_remove_wpseo_notifications' );
+add_action( 'init', 'ngng_remove_wpseo_notifications' );
 
 
 /**
