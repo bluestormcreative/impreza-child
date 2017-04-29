@@ -8,8 +8,8 @@
 * @author Shannon MacMillan
 */
 function bsc_enqueue_scripts() {
-    // Add a jQuery script to handle the fixed header responsively.
-    wp_enqueue_script( 'bsc-scripts', get_stylesheet_directory_uri() .'/js/ngng-scripts.js', array( 'jquery' ), false, true );
+	// Add a jQuery script to handle the fixed header responsively.
+	wp_enqueue_script( 'bsc-scripts', get_stylesheet_directory_uri() .'/js/ngng-scripts.js', array( 'jquery' ), false, true );
 }
 add_action( 'wp_enqueue_scripts', 'bsc_enqueue_scripts' );
 
@@ -86,3 +86,48 @@ function ngng_class_names( $classes ) {
 	return $classes;
 }
 add_filter( 'body_class', 'ngng_class_names' );
+
+
+/**
+ * Add the Headers post type so we can use VC for headers
+ * Generated using Custom Post Types UI plugin.
+ *
+ * @author Shannon MacMillan
+ */
+function cptui_register_my_cpts_page_header() {
+
+	/**
+	 * Post Type: Headers.
+	 */
+
+	$labels = array(
+		"name" => __( 'Headers', '' ),
+		"singular_name" => __( 'Header', '' ),
+	);
+
+	$args = array(
+		"label" => __( 'Headers', '' ),
+		"labels" => $labels,
+		"description" => "",
+		"public" => true,
+		"publicly_queryable" => false,
+		"show_ui" => true,
+		"show_in_rest" => false,
+		"rest_base" => "",
+		"has_archive" => false,
+		"show_in_menu" => "themes.php",
+		"show_in_menu_string" => "themes.php",
+		"menu_position" => 10,
+		"exclude_from_search" => true,
+		"capability_type" => "post",
+		"map_meta_cap" => true,
+		"hierarchical" => false,
+		"rewrite" => array( "slug" => "page_header", "with_front" => true ),
+		"query_var" => true,
+		"supports" => array( "title", "editor" ),
+	);
+
+	register_post_type( "page_header", $args );
+}
+
+add_action( 'init', 'cptui_register_my_cpts_page_header' );
