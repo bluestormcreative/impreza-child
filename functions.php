@@ -49,7 +49,7 @@ add_action( 'init', 'ngng_remove_wpseo_notifications' );
 *
 * @author Shannon MacMillan
 */
-add_filter( 'acf/settings/show_admin', '__return_false' );
+//add_filter( 'acf/settings/show_admin', '__return_false' );
 
 
 /**
@@ -164,6 +164,50 @@ function ngng_create_global_header_post() {
 	}
 }
 add_action( 'after_switch_theme', 'ngng_create_global_header_post' );
+
+
+/**
+ * Add either a global header or a page-specific header.
+ *
+ * @return string The markup for the header.
+ *
+ * @author Shannon MacMillan
+ */
+function bsc_do_ngng_header() {
+	// If we don't have ACF installed, get out of here to avoid a fatal error.
+	if ( ! class_exists( 'acf' ) ) {
+		 return false;
+	}
+	 // Get the post so we can grab our custom fields.
+	 global $post;
+	 // Custom header options for this page.
+	 $hide_banner = get_field( 'hide_page_header' );
+	 $choose_header = get_field( 'choose_page_header' );
+	 // Get the title of our specific header so we can check against the global.
+	 $page_specific_header_title = $choose_header->post_title;
+	 // Let's grab our global header if we have one.
+	 $global_header = get_page_by_title( 'Global Header', OBJECT, 'page_header' );
+	if ( true != $hide_banner ) {
+		// If we've chosen a page-specific header...
+		if ( $choose_header && 'Global Header' !== $page_specific_header_title ) {
+			// We're going to display the specific page header.
+			$header_post = $choose_header;
+		} elseif ( $global_header ) {
+			//  We're going to display the global header post.
+			$header_post = $global_header;
+		}
+		// Override $post with our header data.
+		setup_postdata( $header_post );
+		?>
+			<div id="banner" class="banner">
+				<?php the_content(); ?>
+			</div><!-- .banner -->
+
+		<?php
+		wp_reset_postdata();
+	}
+}
+add_action( 'us_after_template:templates/l-header', 'bsc_do_ngng_header', 12 );
 
 
 /**
