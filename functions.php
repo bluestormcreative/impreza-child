@@ -180,19 +180,26 @@ function bsc_do_ngng_header() {
 	}
 	 // Get the post so we can grab our custom fields.
 	 global $post;
+
 	 // Custom header options for this page.
 	 $hide_banner = get_field( 'hide_page_header' );
 	 $choose_header = get_field( 'choose_page_header' );
+
 	 // Get the title of our specific header so we can check against the global.
 	 $page_specific_header_title = $choose_header->post_title;
+
 	 // Let's grab our global header if we have one.
 	 $global_header = get_page_by_title( 'Global Header', OBJECT, 'page_header' );
+
 	if ( true != $hide_banner ) {
+
 		// If we've chosen a page-specific header...
 		if ( $choose_header && 'Global Header' !== $page_specific_header_title ) {
+
 			// We're going to display the specific page header.
 			$header_post = $choose_header;
 		} elseif ( $global_header ) {
+
 			//  We're going to display the global header post.
 			$header_post = $global_header;
 		}
