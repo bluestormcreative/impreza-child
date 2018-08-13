@@ -1,5 +1,5 @@
-# NGNG Impreza Child
-Impreza Child Theme modifications for NGNG Enterprises
+# Impreza Child
+Impreza Child Theme modifications
 
 
 1. Optional ACF options page, global banner, and global optins in header requires ACF Pro plugin to be active.
